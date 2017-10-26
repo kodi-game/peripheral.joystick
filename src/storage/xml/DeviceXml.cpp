@@ -195,8 +195,8 @@ bool CDeviceXml::SerializeAxis(unsigned int index, const AxisConfiguration& axis
     TriggerProperties defaultTrigger{ };
     if (!(axisConfig.trigger == defaultTrigger))
     {
-      axisElem->SetAttribute(BUTTONMAP_XML_ATTR_AXIS_CENTER, axisConfig.trigger.center);
-      axisElem->SetAttribute(BUTTONMAP_XML_ATTR_AXIS_RANGE, axisConfig.trigger.range);
+      axisElem->SetDoubleAttribute(BUTTONMAP_XML_ATTR_AXIS_CENTER, axisConfig.trigger.center);
+      axisElem->SetDoubleAttribute(BUTTONMAP_XML_ATTR_AXIS_RANGE, axisConfig.trigger.range);
     }
 
     if (axisConfig.bIgnore)
@@ -243,11 +243,11 @@ bool CDeviceXml::DeserializeAxis(const TiXmlElement* pElement, unsigned int& ind
 
   const char* center = pElement->Attribute(BUTTONMAP_XML_ATTR_AXIS_CENTER);
   if (center)
-    config.trigger.center = std::atoi(center);
+    config.trigger.center = std::atof(center);
 
   const char* range = pElement->Attribute(BUTTONMAP_XML_ATTR_AXIS_RANGE);
   if (range)
-    config.trigger.range = std::atoi(range);
+    config.trigger.range = std::atof(range);
 
   const char* ignore = pElement->Attribute(BUTTONMAP_XML_ATTR_IGNORE);
   if (ignore)

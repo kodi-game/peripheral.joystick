@@ -25,15 +25,15 @@ namespace JOYSTICK
 {
   struct TriggerProperties
   {
-    int center;
-    unsigned int range;
+    float center;
+    float range;
 
     TriggerProperties() { Reset(); }
 
     void Reset()
     {
-      center = 0;
-      range = 1;
+      center = 0.0f;
+      range = 1.0f;
     }
 
     bool operator==(const TriggerProperties& other) const
