@@ -205,6 +205,13 @@ void CJoystick::SetAxisValue(unsigned int axisIndex, JOYSTICK_STATE_AXIS axisVal
 
   axisValue = CONSTRAIN(-1.0f, axisValue, 1.0f);
 
+  if (axisValue < 0.5f)
+    axisValue = 0.0f;
+  else if (axisValue > 0.5f)
+    axisValue = 1.0f;
+  else
+    axisValue = 0.498f;
+
   if (axisIndex < m_stateBuffer.axes.size())
   {
     m_stateBuffer.axes[axisIndex].state = axisValue;
